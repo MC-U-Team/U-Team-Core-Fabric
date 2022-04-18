@@ -69,11 +69,11 @@ repositories {
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	minecraft "com.mojang:minecraft:${config.minecraft.version}"
 	mappings loom.officialMojangMappings()
 	
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc:fabric-loader:${config.fabric.loader.version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${config.fabric.api.version}"
 }
 
 processResources {
@@ -96,7 +96,7 @@ curseforge {
 		addGameVersion "Java 17"
 		
 		mainArtifact(tasks.getByName("jar")) {
-			displayName = "${config.curse.display}-${config.forge.mcversion}-${project.version}"
+			displayName = "${config.curse.display}-${config.minecraft.version}-${project.version}"
 			changelogType = "html"
 			changelog = "<a href=\"${gradlefiles.changelogUrl()}\">Changelog of ${project.version}</a>"
 		}
