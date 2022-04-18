@@ -73,7 +73,6 @@ dependencies {
 	mappings loom.officialMojangMappings()
 	
 	modImplementation "net.fabricmc:fabric-loader:${config.fabric.loader.version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${config.fabric.api.version}"
 }
 
 processResources {
