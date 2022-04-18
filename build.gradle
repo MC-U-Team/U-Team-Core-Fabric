@@ -1,8 +1,8 @@
 buildscript {
 	repositories {
 		maven {
-            url = "https://maven.fabricmc.net"
-        }
+			url = "https://maven.fabricmc.net"
+		}
 		maven {
 			url = "https://maven.minecraftforge.net"
 		}
@@ -78,7 +78,7 @@ dependencies {
 
 processResources {
 	inputs.property "version", project.version
-
+	
 	filesMatching("fabric.mod.json") {
 		expand "version": project.version
 	}
@@ -94,7 +94,7 @@ curseforge {
 		addGameVersion config.forge.mcversion
 		addGameVersion "Fabric"
 		addGameVersion "Java 17"
-				
+		
 		mainArtifact(tasks.getByName("jar")) {
 			displayName = "${config.curse.display}-${config.forge.mcversion}-${project.version}"
 			changelogType = "html"
