@@ -90,7 +90,7 @@ curseforge {
 		id = config.curse.id
 		releaseType = config.curse.type
 		
-		addGameVersion config.forge.mcversion
+		addGameVersion config.minecraft.version
 		addGameVersion "Fabric"
 		addGameVersion "Java 17"
 		
