@@ -7,9 +7,6 @@ buildscript {
 			url = "https://maven.minecraftforge.net"
 		}
 		maven {
-			url = "https://maven.parchmentmc.org"
-		}
-		maven {
 			url = "https://repo.u-team.info"
 		}
 		mavenCentral()
@@ -32,15 +29,12 @@ version = gradlefiles.version()
 
 gradlefiles {
 	vendor "Team UTeam"
-	
-	signJars true
 }
 
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
 	}
-	withDeobfJar()
 	withSourcesJar()
 	withJavadocJar()
 }
@@ -56,6 +50,8 @@ tasks.withType(Jar) { task ->
 tasks.withType(Javadoc) { task ->
 	task.options.addStringOption("Xdoclint:none", "-quiet")
 }
+
+gradlefiles.signDefaultFabricJar()
 
 sourceSets {
 	main {
