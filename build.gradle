@@ -54,8 +54,8 @@ configurations {
 }
 
 tasks.named("shadowJar") {
-	archiveClassifier = "dev"
-	destinationDirectory = file("$buildDir/devlibs")
+	archiveClassifier = tasks.getByName("jar").archiveClassifier
+	destinationDirectory = tasks.getByName("jar").destinationDirectory
 	configurations = [project.configurations.shade]
 	
 	dependsOn "jar"
