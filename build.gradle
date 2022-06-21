@@ -53,6 +53,21 @@ configurations {
 	implementation.extendsFrom(shade)
 }
 
+tasks.named("shadowJar") {
+	archiveClassifier = "dev"
+	destinationDirectory = file("$buildDir/devlibs")
+	configurations = [project.configurations.shade]
+	
+	dependsOn "jar"
+	
+	relocate "net.minecraftforge.fml", "info.u_team.u_team_core.internal.shade.net.minecraftforge.fml"
+	relocate "net.hycrafthd.update_checker", "info.u_team.u_team_core.internal.shade.net.hycrafthd.update_checker"
+}
+
+tasks.named("prepareRemapJar") {
+	dependsOn "shadowJar"
+}
+
 tasks.withType(Jar) { task ->
 	gradlefiles.defaultJar(task)
 }
