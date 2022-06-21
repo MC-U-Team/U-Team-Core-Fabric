@@ -21,9 +21,7 @@
 		]
 	},
 	"accessWidener": "uteamcore.accesswidener",
-	"mixins": [
-		"uteamcore.mixins.json"
-	],
+	"mixins": [],
 	"depends": {
 		"fabricloader": ">=0.13.3",
 		"minecraft": "1.18.2",
