@@ -30,6 +30,6 @@
 		"java": ">=17"
 	},
 	"custom": {
-		"uteamcore:update_url": "https://api.u-team.info/update/uteamcore.json"
+		"uteamcore:update_url": "https://api.u-team.info/update/uteamcore_fabric.json"
 	}
 }
