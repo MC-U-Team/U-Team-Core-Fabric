@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.18.2-4.0.0.7] - 2022-09-14
+### Changed
+ - Update gradle files version
+ - Update gradle wrapper
+ - Compress jsons in jar now
+ - Update fabric loader
+
 ## [1.18.2-4.0.0.3] - 2022-06-21
 ### Changed
  - Replace vars with concrete types
