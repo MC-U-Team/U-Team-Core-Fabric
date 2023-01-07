@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.18.2-4.0.0.9] - 2023-01-07
+### Changed
+ - Update fabric loader
+
 ## [1.18.2-4.0.0.7] - 2022-09-14
 ### Changed
  - Update gradle files version
