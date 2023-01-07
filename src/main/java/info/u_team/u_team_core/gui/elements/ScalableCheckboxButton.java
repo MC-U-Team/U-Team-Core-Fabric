@@ -17,15 +17,7 @@ public class ScalableCheckboxButton extends CheckboxButton implements Scalable, 
 	}
 	
 	public ScalableCheckboxButton(int x, int y, int width, int height, Component text, boolean checked, boolean drawText, float scale, OnPress pessable) {
-		this(x, y, width, height, text, checked, drawText, scale, pessable, EMPTY_TOOLTIP);
-	}
-	
-	public ScalableCheckboxButton(int x, int y, int width, int height, Component text, boolean checked, boolean drawText, float scale, OnTooltip tooltip) {
-		this(x, y, width, height, text, checked, drawText, scale, EMTPY_PRESSABLE, tooltip);
-	}
-	
-	public ScalableCheckboxButton(int x, int y, int width, int height, Component text, boolean checked, boolean drawText, float scale, OnPress pessable, OnTooltip tooltip) {
-		super(x, y, width, height, text, checked, drawText, pessable, tooltip);
+		super(x, y, width, height, text, checked, drawText, pessable);
 		this.scale = scale;
 	}
 	

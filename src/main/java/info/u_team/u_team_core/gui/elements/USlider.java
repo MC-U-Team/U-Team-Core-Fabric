@@ -34,15 +34,7 @@ public non-sealed class USlider extends AbstractSliderLogic implements Perspecti
 	}
 	
 	public USlider(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double value, boolean decimalPrecision, boolean drawDescription, boolean isInContainer, OnSliderChange slider) {
-		this(x, y, width, height, prefix, suffix, minValue, maxValue, value, decimalPrecision, drawDescription, isInContainer, slider, EMPTY_TOOLTIP);
-	}
-	
-	public USlider(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double value, boolean decimalPrecision, boolean drawDescription, boolean isInContainer, OnTooltip tooltip) {
-		this(x, y, width, height, prefix, suffix, minValue, maxValue, value, decimalPrecision, drawDescription, isInContainer, EMPTY_SLIDER, tooltip);
-	}
-	
-	public USlider(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double value, boolean decimalPrecision, boolean drawDescription, boolean isInContainer, OnSliderChange slider, OnTooltip tooltip) {
-		super(x, y, width, height, prefix, suffix, minValue, maxValue, value, decimalPrecision, drawDescription, slider, tooltip);
+		super(x, y, width, height, prefix, suffix, minValue, maxValue, value, decimalPrecision, drawDescription, slider);
 		this.isInContainer = isInContainer;
 		sliderBackgroundTextureProvider = new WidgetTextureProvider(this, hovered -> 0);
 		sliderBackgroundColor = WHITE;
@@ -82,11 +74,6 @@ public non-sealed class USlider extends AbstractSliderLogic implements Perspecti
 	@Override
 	public void renderForeground(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
 		WidgetUtil.renderText(this, poseStack, mouseX, mouseY, partialTicks);
-	}
-	
-	@Override
-	public void renderToolTip(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
-		renderToolTip(poseStack, mouseX, mouseY);
 	}
 	
 	@Override

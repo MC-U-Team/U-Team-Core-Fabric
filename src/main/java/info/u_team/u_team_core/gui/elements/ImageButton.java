@@ -18,15 +18,7 @@ public class ImageButton extends UButton {
 	}
 	
 	public ImageButton(int x, int y, int width, int height, ResourceLocation image, OnPress pessable) {
-		this(x, y, width, height, image, pessable, EMPTY_TOOLTIP);
-	}
-	
-	public ImageButton(int x, int y, int width, int height, ResourceLocation image, OnTooltip tooltip) {
-		this(x, y, width, height, image, EMTPY_PRESSABLE, tooltip);
-	}
-	
-	public ImageButton(int x, int y, int width, int height, ResourceLocation image, OnPress pessable, OnTooltip tooltip) {
-		super(x, y, width, height, Component.empty(), pessable, tooltip);
+		super(x, y, width, height, Component.empty(), pessable);
 		this.image = image;
 		imageColor = WHITE;
 	}

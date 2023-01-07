@@ -15,11 +15,7 @@ public class ScalableEditBox extends UEditBox implements Scalable, ScaleProvider
 	protected float scale;
 	
 	public ScalableEditBox(Font font, int x, int y, int width, int height, UEditBox previousEditBox, Component title, float scale) {
-		this(font, x, y, width, height, previousEditBox, title, scale, EMPTY_TOOLTIP);
-	}
-	
-	public ScalableEditBox(Font font, int x, int y, int width, int height, UEditBox previousEditBox, Component title, float scale, OnTooltip tooltip) {
-		super(font, x, y, width, height, previousEditBox, title, tooltip);
+		super(font, x, y, width, height, previousEditBox, title);
 		this.scale = scale;
 	}
 	

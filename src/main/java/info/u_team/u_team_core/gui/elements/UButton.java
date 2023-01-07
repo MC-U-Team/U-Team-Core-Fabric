@@ -12,18 +12,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 
-/**
- * A button that fixes vanilla not drawing the continuous border if the button is smaller than 20. Also adds utility
- * methods to add an IPressable and ITooltip
- *
- * @author HyCraftHD
- */
 public class UButton extends Button implements PerspectiveRenderable, BackgroundColorProvider, TextProvider {
 	
 	protected static final OnPress EMTPY_PRESSABLE = button -> {
 	};
 	
-	protected static final OnTooltip EMPTY_TOOLTIP = Button.NO_TOOLTIP;
+	protected static final CreateNarration DEFAULT_NARRATION = Button.DEFAULT_NARRATION;
 	
 	protected static final RGBA WHITE = RGBA.WHITE;
 	protected static final RGBA LIGHT_GRAY = new RGBA(0xA0A0A0FF);
@@ -38,17 +32,12 @@ public class UButton extends Button implements PerspectiveRenderable, Background
 		this(x, y, width, height, text, EMTPY_PRESSABLE);
 	}
 	
-	public UButton(int x, int y, int width, int height, Component text, OnPress pessable) {
-		this(x, y, width, height, text, pessable, EMPTY_TOOLTIP);
+	public UButton(int x, int y, int width, int height, Component text, OnPress pressable) {
+		this(x, y, width, height, text, pressable, DEFAULT_NARRATION);
 	}
 	
-	public UButton(int x, int y, int width, int height, Component text, OnTooltip tooltip) {
-		this(x, y, width, height, text, EMTPY_PRESSABLE, tooltip);
-	}
-	
-	public UButton(int x, int y, int width, int height, Component text, OnPress pessable, OnTooltip tooltip) {
-		super(x, y, width, height, text, pessable);
-		onTooltip = tooltip;
+	public UButton(int x, int y, int width, int height, Component text, OnPress pressable, CreateNarration narration) {
+		super(x, y, width, height, text, pressable, narration);
 		buttonTextureProvider = new WidgetTextureProvider(this, this::getYImage);
 		buttonColor = WHITE;
 		textColor = WHITE;
@@ -63,8 +52,8 @@ public class UButton extends Button implements PerspectiveRenderable, Background
 		onPress = button -> runnable.run();
 	}
 	
-	public void setTooltip(OnTooltip tooltip) {
-		onTooltip = tooltip;
+	public void setCreateNarration(CreateNarration narration) {
+		createNarration = narration;
 	}
 	
 	public RGBA getButtonColor() {
@@ -104,11 +93,6 @@ public class UButton extends Button implements PerspectiveRenderable, Background
 	@Override
 	public void renderForeground(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
 		WidgetUtil.renderText(this, poseStack, mouseX, mouseY, partialTicks);
-	}
-	
-	@Override
-	public void renderToolTip(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
-		renderToolTip(poseStack, mouseX, mouseY);
 	}
 	
 	@Override

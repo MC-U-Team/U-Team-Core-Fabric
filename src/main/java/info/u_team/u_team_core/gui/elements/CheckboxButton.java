@@ -23,15 +23,7 @@ public class CheckboxButton extends UButton {
 	}
 	
 	public CheckboxButton(int x, int y, int width, int height, Component text, boolean checked, boolean drawText, OnPress pessable) {
-		this(x, y, width, height, text, checked, drawText, pessable, EMPTY_TOOLTIP);
-	}
-	
-	public CheckboxButton(int x, int y, int width, int height, Component text, boolean checked, boolean drawText, OnTooltip tooltip) {
-		this(x, y, width, height, text, checked, drawText, EMTPY_PRESSABLE, tooltip);
-	}
-	
-	public CheckboxButton(int x, int y, int width, int height, Component text, boolean checked, boolean drawText, OnPress pessable, OnTooltip tooltip) {
-		super(x, y, width, height, text, pessable, tooltip);
+		super(x, y, width, height, text, pessable);
 		this.checked = checked;
 		this.drawText = drawText;
 		leftSideText = false;

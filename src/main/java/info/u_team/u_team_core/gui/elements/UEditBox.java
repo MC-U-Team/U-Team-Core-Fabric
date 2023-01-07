@@ -14,9 +14,6 @@ import net.minecraft.network.chat.Component;
 
 public class UEditBox extends EditBox implements RenderTickable, PerspectiveRenderable, BackgroundColorProvider, TextSettingsProvider {
 	
-	protected static final OnTooltip EMPTY_TOOLTIP = (editBox, poseStack, mouseX, mouseY) -> {
-	};
-	
 	protected static final RGBA BLACK = RGBA.BLACK;
 	protected static final RGBA WHITE = RGBA.WHITE;
 	
@@ -25,8 +22,6 @@ public class UEditBox extends EditBox implements RenderTickable, PerspectiveRend
 	protected static final RGBA GRAY = new RGBA(0xA0A0A0FF);
 	protected static final RGBA DARKER_GRAY = new RGBA(0x808080FF);
 	protected static final RGBA DARK_GRAY = new RGBA(0x707070FF);
-	
-	protected OnTooltip onTooltip;
 	
 	protected RGBA backgroundFrameColor;
 	protected RGBA unfocusedBackgroundFrameColor;
@@ -39,13 +34,8 @@ public class UEditBox extends EditBox implements RenderTickable, PerspectiveRend
 	protected RGBA cursorColor;
 	
 	public UEditBox(Font font, int x, int y, int width, int height, UEditBox previousEditBox, Component title) {
-		this(font, x, y, width, height, previousEditBox, title, EMPTY_TOOLTIP);
-	}
-	
-	public UEditBox(Font font, int x, int y, int width, int height, UEditBox previousEditBox, Component title, OnTooltip tooltip) {
 		super(font, x, y, width, height, title);
 		setPreviousText(previousEditBox);
-		onTooltip = tooltip;
 		backgroundFrameColor = WHITE;
 		unfocusedBackgroundFrameColor = GRAY;
 		backgroundColor = BLACK;
@@ -53,10 +43,6 @@ public class UEditBox extends EditBox implements RenderTickable, PerspectiveRend
 		disabledTextColor = DARK_GRAY;
 		suggestionTextColor = DARKER_GRAY;
 		cursorColor = LIGHTER_GRAY;
-	}
-	
-	public void setTooltip(OnTooltip tooltip) {
-		onTooltip = tooltip;
 	}
 	
 	public RGBA getBackgroundFrameColor() {
@@ -208,16 +194,6 @@ public class UEditBox extends EditBox implements RenderTickable, PerspectiveRend
 			final int selectedX = xOffset + font.width(currentText.substring(0, selectionOffset));
 			renderHighlight(rightRenderedTextX, yOffset - 1, selectedX - 1, yOffset + 1 + 9);
 		}
-	}
-	
-	@Override
-	public void renderToolTip(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
-		renderToolTip(poseStack, mouseX, mouseY);
-	}
-	
-	@Override
-	public void renderToolTip(PoseStack poseStack, int mouseX, int mouseY) {
-		onTooltip.onTooltip(this, poseStack, mouseX, mouseY);
 	}
 	
 	@Override

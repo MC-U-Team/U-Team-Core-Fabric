@@ -7,6 +7,7 @@ accessible field net/minecraft/client/gui/components/AbstractWidget x I
 accessible field net/minecraft/client/gui/components/AbstractWidget y I
 
 mutable field net/minecraft/client/gui/components/Button onPress Lnet/minecraft/client/gui/components/Button$OnPress;
+mutable field net/minecraft/client/gui/components/Button createNarration Lnet/minecraft/client/gui/components/Button$CreateNarration;
 
 accessible field net/minecraft/client/gui/components/EditBox font Lnet/minecraft/client/gui/Font;
 accessible field net/minecraft/client/gui/components/EditBox value Ljava/lang/String;

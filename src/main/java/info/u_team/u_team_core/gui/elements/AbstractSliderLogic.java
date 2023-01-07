@@ -23,13 +23,13 @@ public abstract sealed class AbstractSliderLogic extends UButton permits USlider
 	
 	public boolean dragging = false;
 	
-	protected AbstractSliderLogic(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double currentValue, boolean decimalPrecision, boolean drawDescription, OnSliderChange slider, OnTooltip tooltip) {
-		super(x, y, width, height, prefix, EMTPY_PRESSABLE, tooltip);
+	protected AbstractSliderLogic(int x, int y, int width, int height, Component prefix, Component suffix, double minValue, double maxValue, double currentValue, boolean decimalPrecision, boolean drawDescription, OnSliderChange slider) {
+		super(x, y, width, height, prefix, EMTPY_PRESSABLE);
 		this.prefix = prefix;
 		this.suffix = suffix;
 		this.minValue = minValue;
 		this.maxValue = maxValue;
-		this.value = (currentValue - minValue) / (maxValue - minValue);
+		value = (currentValue - minValue) / (maxValue - minValue);
 		this.decimalPrecision = decimalPrecision;
 		this.drawDescription = drawDescription;
 		
@@ -61,6 +61,12 @@ public abstract sealed class AbstractSliderLogic extends UButton permits USlider
 	}
 	
 	public void updateSlider() {
+		updateSliderText();
+		
+		slider.onChange(this);
+	}
+	
+	public void updateSliderText() {
 		value = Mth.clamp(value, 0, 1);
 		
 		String displayValue;
@@ -86,8 +92,6 @@ public abstract sealed class AbstractSliderLogic extends UButton permits USlider
 		if (drawDescription) {
 			setMessage(Component.empty().append(prefix).append(displayValue).append(suffix));
 		}
-		
-		slider.onChange(this);
 	}
 	
 	public int getValueInt() {
@@ -100,6 +104,7 @@ public abstract sealed class AbstractSliderLogic extends UButton permits USlider
 	
 	public void setValue(double value) {
 		this.value = (value - minValue) / (maxValue - minValue);
+		updateSliderText();
 	}
 	
 	public static interface OnSliderChange {
