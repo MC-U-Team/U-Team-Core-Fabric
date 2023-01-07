@@ -62,6 +62,10 @@ tasks.named("shadowJar") {
 	relocate "net.hycrafthd.update_checker", "info.u_team.u_team_core.internal.shade.net.hycrafthd.update_checker"
 }
 
+components.java.withVariantsFromConfiguration(configurations.getByName("shadowRuntimeElements")) {
+	skip()
+}
+
 tasks.named("prepareRemapJar") {
 	dependsOn "shadowJar"
 }
